@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagalog Flashcard Trainer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lexend:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
+
+</head>
+<body>
+    
+    <div class="nav-menu"> 
+        <a href="index.html">Home Page</a>
+        <a href="resume.html">Resume</a>
+        <a href="scratch.html">The Philippines</a>
+        <a href="#" class="active">Tagalog Language Challenge!</a>
+    </div>
+
+    <div class="app-container content-box">
+
+        <h1 style="color:#002f6c; text-align:center">Tagalog Language Challenge!</h1>
+
+    <div>
+        <img src="Flag3.jpeg" height="150" alt="Filipino Flag">
+
+        <p>
+            The word "Tagalog" comes from the combination of two words: "taga," meaning "from," and "ilog," which means "river." The word literally translates to "river dwellers." Tagalog is heavily influenced by several languages, including Spanish, Chinese, Sanskrit, and English. <br><br>
+            In this activity, you'll test your Tagalog skills by guessing the English translation of several common, every-day words! <br>
+            Good luck, and have fun!!! <br>
+        </p>
+
+        <div class="progress-container">
+            <div id="progress" class="progress-bar"></div>
+        </div>
+
+        <div class="score-tracker">
+            Current Streak: <span id="streak-count">0</span> |
+            High Score: <span id="high-score">0</span>
+        </div>
+
+        <div class="Flashcard">
+            <div id="card-word" class="tagalog-word">Mabuhay!</div>
+            <div id="card-hint" class="context-hint">Positive greeting or excited exclamation</div>
+        </div>
+
+        <div id="feedback-msg" class="feedback"></div>
+
+        <div class="options-grid">
+            <!-- Updated onclick function names to match the script precisely -->
+            <button class="btn-option" onclick="checkAnswer(0)" id="opt0">Option #1</button>
+            <button class="btn-option" onclick="checkAnswer(1)" id="opt1">Option #2</button>
+            <button class="btn-option" onclick="checkAnswer(2)" id="opt2">Option #3</button>
+            <button class="btn-option" onclick="checkAnswer(3)" id="opt3">Option #4</button>
+        </div>
+
+        <script>
+            // Added missing commas between objects
+            const vocabularyPool = [
+                { word: "Mabuhay", hint: "Positive greeting or excited exclamation", correct: "Welcome" },
+                { word: "Nanay", hint: "Indicates an affectionate relationship with a maternal elder", correct: "Mom" },
+                { word: "Tatay", hint: "Indicates an affectionate relationship with a paternal elder", correct: "Dad" },
+                { word: "Kaligayahan", hint: "Positive adjective for describing feelings", correct: "Joy" },
+                { word: "Pamilya", hint: "A collection of relatives", correct: "Family" },
+                { word: "Simbahan", hint: "A place to go to worship", correct: "Church" },
+                { word: "Pagmamahal", hint: "A feeling of affection towards someone or something", correct: "Love" },
+                { word: "Umaga", hint: "Hours in the day before noon", correct: "Morning" },
+                { word: "Gabi", hint: "Hours in the day after 6pm", correct: "Night/Evening" },
+                { word: "Palagi", hint: "An extended or infinite period of time", correct: "Forever" },
+                { word: "Maganda", hint: "A synonym for pretty or attractive", correct: "Beautiful" },
+                { word: "Masarap", hint: "To taste good", correct: "Delicious" },
+                { word: "Gutom", hint: "To crave or desire food", correct: "Hungry" },
+                { word: "Pagod", hint: "The feeling you get at the end of a long day", correct: "Tired/Exhausted" },
+                { word: "Pananampalataya", hint: "Belief in something you cannot see or feel", correct: "Faith" },
+                { word: "Palengke", hint: "A place to go to shop", correct: "Market" }
+            ];
+
+            // Standardized capitalization across all variables
+            let currentCardIndex = 0;
+            let streak = 0;
+            let highestStreak = 0;
+            let currentOptions = [];
+
+            function initGame() {
+                vocabularyPool.sort(() => Math.random() - 0.5);
+                loadCard(0);
+            }
+
+            function loadCard(index){
+                if(index >= vocabularyPool.length){
+                    index = 0;
+                    vocabularyPool.sort(() => Math.random() - 0.5);
+                }
+
+                currentCardIndex = index;
+                const currentItem = vocabularyPool[index];
+
+                document.getElementById("card-word").innerText = currentItem.word;
+                // Swapped single quotes to backticks for template strings
+                document.getElementById("card-hint").innerText = `Hint: ${currentItem.hint}`;
+                document.getElementById("feedback-msg").innerText = "";
+
+                let options = [currentItem.correct];
+                while (options.length < 4) {
+                    let randomItem = vocabularyPool[Math.floor(Math.random() * vocabularyPool.length)].correct;
+                    if (!options.includes(randomItem)) {
+                        options.push(randomItem);
+                    }
+                }
+
+                options.sort(() => Math.random() - 0.5);
+                currentOptions = options;
+
+                for(let i = 0; i < 4; i++){
+                    // Swapped string formatting so IDs hook accurately
+                    document.getElementById("opt" + i).innerText = options[i];
+                    document.getElementById("opt" + i).disabled = false;
+                }
+
+                let progressPercent = (index / vocabularyPool.length) * 100;
+                document.getElementById("progress").style.width = `${progressPercent}%`;
+            }
+
+            function checkAnswer(selectedIndex) {
+                const correctAnswerText = vocabularyPool[currentCardIndex].correct;
+                const feedbackContainer = document.getElementById("feedback-msg");
+
+                for(let i = 0; i < 4; i++) {
+                    document.getElementById("opt" + i).disabled = true;
+                }
+
+                if (currentOptions[selectedIndex] === correctAnswerText) {
+                    streak++;
+                    feedbackContainer.className = "feedback correct";
+                    feedbackContainer.innerText = "Tama! (Correct!)";
+                    if (streak > highestStreak) {
+                        highestStreak = streak;
+                    }
+                } else {
+                    streak = 0;
+                    feedbackContainer.className = "feedback wrong"; // Matches your CSS class name
+                    feedbackContainer.innerText = `Mali! Correct Answer: ${correctAnswerText}`;
+                }
+
+                document.getElementById("streak-count").innerText = streak;
+                document.getElementById("high-score").innerText = highestStreak;
+
+                setTimeout(() => {
+                    loadCard(currentCardIndex + 1);
+                }, 2000);
+            }
+
+            window.onload = initGame;
+        </script>
+    </div>
+
+</body>
+</html>
