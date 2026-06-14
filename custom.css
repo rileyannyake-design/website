@@ -471,3 +471,11 @@ a[href="#"]:hover {
     }
 }
 
+/* Fix for top nav overlap on smaller screens / mobile view */
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 220px !important; /* Pushes the main text box safely down below the top banner */
+        margin: 20px !important;       /* Keeps a clean, small margin on the sides of mobile screens */
+    }
+}
+
