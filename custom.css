@@ -1,9 +1,6 @@
-/* ==========================================
-   GLOBAL RULES & TYPOGRAPHY
-   ========================================== */
 body {
     background-color: rgb(250, 233, 168) !important; /* Forces yellow across ALL pages */
-    margin: 50px;                                      /* Base margin for standard pages */
+    margin: 50px;                                      /* Restores your original 50px side margins */
     padding: 0;
 }
 
@@ -24,22 +21,18 @@ h2, h3, .nav-menu a, .home-container2 a {
     color: #2d3748;
 }
 
-/* ==========================================
-   CONTENT CONTAINERS
-   ========================================== */
+/* Content Containers */
 .content-box {
     background-color: #ffffff;
     padding: 25px;
     border-radius: 12px;
-    margin: 30px auto;        /* balances the sides to center the boxes! */
+    margin: 30px auto;        /* auto balances the sides to center the boxes! */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
     max-width: 800px;
     width: 90%;                
 }
 
-/* ==========================================
-   APP STYLES (TAGALOG CHALLENGE)
-   ========================================== */
+/* App Styles */
 .app-container {
     max-width: 600px;
     margin: 40px auto;
@@ -132,9 +125,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     transition: width 0.3s ease;
 }
 
-/* ==========================================
-   RESUME LAYOUT SPECIFICS
-   ========================================== */
+/* Resume Styles */
 .resume-container {
     text-align: left;
     max-width: 800px;
@@ -189,9 +180,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     margin-top: 20px;
 }
 
-/* ==========================================
-   HOME PAGE STYLES
-   ========================================== */
+/* Home Page Styles */
 .home-container {
     max-width: 800px;
     margin: 40px auto;
@@ -258,9 +247,6 @@ h2, h3, .nav-menu a, .home-container2 a {
     margin-bottom: 0;
 }
 
-/* ==========================================
-   NAVIGATION ELEMENT
-   ========================================== */
 .nav-menu {
     background-color: #002f6c;
     padding: 15px 10px;
@@ -301,7 +287,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     color: #ffffff;
 }
 
-/* Navigation Sub-containers */
+/* sub-boxes */
 .home-container3 {
     background-color: #9bcdff;    
     border: 2px solid #002f6c;    
@@ -368,9 +354,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     color: #ffffff !important;           
 }
 
-/* ==========================================
-   PHOTO & MEDIA GALLERY
-   ========================================== */
+/* Photo Gallery */
 .photo-gallery {
     display: flex;
     justify-content: center; 
@@ -396,6 +380,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); 
 }
 
+/* Video Container */
 .video-container {
     display: flex;
     justify-content: center; 
@@ -410,7 +395,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     border: none;            
 }
 
-/* Back to Top link */
+/* Back to Top */
 a[href="#top"], 
 a[href="#"]:is(:link, :visited) {
     display: inline-block;
@@ -443,11 +428,11 @@ a[href="#"]:hover {
    START BOOTSTRAP RESUME TEMPLATE OVERRIDES
    ========================================== */
 #sideNav {
-    background-color: #002f6c !important; /* Force side nav to deep navy blue */
+    background-color: #002f6c !important;
 }
 
 .text-primary {
-    color: #002f6c !important; /* Force template elements to use deep navy blue */
+    color: #002f6c !important;
 }
 
 .btn-outline-primary {
@@ -460,22 +445,19 @@ a[href="#"]:hover {
     color: #ffffff !important;
 }
 
-/* Fix structural templates sizing on desktop viewports */
+/* Desktop layout configurations */
 @media (min-width: 992px) {
     body {
-        padding-left: 17rem !important; /* Makes clean space for the fixed left side menu */
-        margin: 0 !important;           /* Strips out the 50px global margin on desktop so layouts align flush */
-    }
-    .nav-menu {
-        display: none !important;       /* Hides the old horizontal navbar on template pages */
+        padding-left: 17rem !important;
+        margin: 0 !important;
     }
 }
 
-/* Fix for top nav overlap on smaller screens / mobile view */
+/* Mobile/Top Banner layout configurations */
 @media (max-width: 991.98px) {
     body {
-        padding-top: 220px !important; /* Pushes the main text box safely down below the top banner */
-        margin: 20px !important;       /* Keeps a clean, small margin on the sides of mobile screens */
+        padding-top: 12rem !important; /* Safely clears the sticky header banner view */
+        margin: 20px !important;
     }
 }
 
