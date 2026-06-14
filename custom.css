@@ -1,10 +1,10 @@
 body {
-    background-color: #ffffff; /* Clean white backdrop default for sub-pages */
-    margin: 0;                 /* Reset default browser spacing */
+    background-color: rgb(250, 233, 168) !important; /* Forces yellow across ALL pages */
+    margin: 50px;                                      /* Restores your original 50px side margins */
     padding: 0;
 }
 
-/* 🌟 Add this helper class specifically to your index.html body tag to handle the yellow theme */
+/* You can leave this here or delete it, the rule above completely overrides everything else! */
 body.home-page {
     background-color: rgb(250, 233, 168); 
 }
