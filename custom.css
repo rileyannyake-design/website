@@ -1,9 +1,12 @@
-
 body {
-    /* 1. ONLY the main page gets your signature yellow background */
-    background-color: rgb(250, 233, 168); 
-    margin: 50px;
+    background-color: #ffffff; /* Clean white backdrop default for sub-pages */
+    margin: 0;                 /* Reset default browser spacing */
     padding: 0;
+}
+
+/* 🌟 Add this helper class specifically to your index.html body tag to handle the yellow theme */
+body.home-page {
+    background-color: rgb(250, 233, 168); 
 }
 
 body, p, span, li, div {
@@ -27,14 +30,12 @@ h2, h3, .nav-menu a, .home-container2 a {
 /* Content Containers */
 .content-box {
     background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 30px auto;        /* 🛠️ Crucial: auto balances the sides to center the boxes! */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Modernized, clean soft drop shadow */
     max-width: 800px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90%;                /* Gives clean breathing room on smaller viewports */
 }
 
 /* App Styles */
@@ -47,7 +48,7 @@ h2, h3, .nav-menu a, .home-container2 a {
 
 .flashcard {
     background-color: #ffffff;
-    border: 2px; solid; color: #00518b;
+    border: 2px solid #00518b;
     border-radius: 15px;
     padding: 50px 20px;
     margin: 30px auto;
@@ -56,12 +57,12 @@ h2, h3, .nav-menu a, .home-container2 a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0,1)
+    box-shadow: 0 6px 12px rgba(0,0,0,0,1);
     transition: transform 0.2s;
 }
 
 .flashcard.hover {
-    transform:scale(1.02)
+    transform: scale(1.02)
 }
 
 .context-hint {
@@ -232,7 +233,7 @@ h2, h3, .nav-menu a, .home-container2 a {
 
 .portal-card {
     background-color: #ffffff;
-    border: 2px solid #002f6c
+    border: 2px solid #002f6c;
     border-radius: 10px;
     padding: 20px;
     text-decoration: none;
@@ -250,7 +251,7 @@ h2, h3, .nav-menu a, .home-container2 a {
     color:#002f6c
 }
 
-.portal-card:hover3 {
+.portal-card3:hover {
     font-size: 0.95rem;
     margin-bottom: 0;
 }
